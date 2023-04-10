@@ -1,3 +1,5 @@
+package ru.netology.radio;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
@@ -319,6 +321,30 @@ public class RadioTest {
         radio.decreaseVolume();
 
         int expected = 99;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void decreaseVolumeMinusTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-1);
+
+        radio.decreaseVolume();
+
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void decreaseVolumeMoreMaxTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(101);
+
+        radio.decreaseVolume();
+
+        int expected = 0;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
